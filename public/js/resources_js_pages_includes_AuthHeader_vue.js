@@ -24,6 +24,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AuthHeader",
   props: {
@@ -128,7 +134,54 @@ var render = function() {
         "flex items-center justify-between flex-wrap p-6 bg-blue-500 text-white"
     },
     [
-      _vm._m(0),
+      _c(
+        "div",
+        {
+          staticClass:
+            "md:flex md:flex-no-shrink block items-center text-white md:w-auto w-full md:text-left text-center"
+        },
+        [
+          _c(
+            "span",
+            { staticClass: "font-semibold text-xl tracking-tight mr-5" },
+            [_vm._v("Beepo Exam App")]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "md:space-x-3 md:inline-block flex flex-col" },
+            [
+              _c(
+                "inertia-link",
+                {
+                  staticClass: "link md:inline-block sm:block",
+                  attrs: { href: "/" }
+                },
+                [_vm._v("Task List")]
+              ),
+              _vm._v(" "),
+              _c(
+                "inertia-link",
+                {
+                  staticClass: "link md:inline-block sm:block",
+                  attrs: { href: "/chart" }
+                },
+                [_vm._v("Chart")]
+              ),
+              _vm._v(" "),
+              _c(
+                "inertia-link",
+                {
+                  staticClass: "link md:inline-block sm:block",
+                  attrs: { href: "/trash-bin" }
+                },
+                [_vm._v("Trash Bin")]
+              )
+            ],
+            1
+          )
+        ]
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -163,25 +216,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "md:flex md:flex-no-shrink block items-center text-white md:w-auto w-full md:text-left text-center"
-      },
-      [
-        _c("span", { staticClass: "font-semibold text-xl tracking-tight" }, [
-          _vm._v("Beepo Exam App")
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

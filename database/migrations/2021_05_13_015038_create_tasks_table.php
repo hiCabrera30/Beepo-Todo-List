@@ -17,6 +17,7 @@ class CreateTasksTable extends Migration {
             $table->unsignedInteger("parent_id")->nullable();
             $table->string("context");
             $table->string("status");
+            $table->unsignedInteger("order");
             $table->unsignedInteger("author_id")->nullable();
             $table->timestamps();
             $table->softDeletes();

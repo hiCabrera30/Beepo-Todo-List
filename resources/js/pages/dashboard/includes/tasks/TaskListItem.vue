@@ -53,10 +53,12 @@
     </div>
 </template>
 <script>
-import FormInput from "../../components/FormInput";
-import FormSelect from "../../components/FormSelect";
+import mixins from "../../../../utils/mixins";
+
+import FormInput from "../../../../components/FormInput";
+import FormSelect from "../../../../components/FormSelect";
 import TaskCreateForm from "./TaskCreateForm";
-import mixins from "../../utils/mixins";
+
 import axios from "axios";
 
 export default {

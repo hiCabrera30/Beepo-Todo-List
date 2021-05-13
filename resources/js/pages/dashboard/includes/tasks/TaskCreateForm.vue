@@ -2,11 +2,12 @@
     <div>
         <form @submit.prevent="submit">
             <form-input placeholder="Create a task"  v-model="form.context" ref="password" :disabled="form.processing"></form-input>
+            <div class="text-sm text-gray-400 mt-1">Press enter to save</div>
         </form>
     </div>
 </template>
 <script>
-import FormInput from "../../components/FormInput";
+import FormInput from "../../../../components/FormInput";
 
 
 export default {

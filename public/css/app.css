@@ -31975,6 +31975,21 @@ video {
   color: rgba(55, 65, 81, var(--tw-text-opacity));
 }
 
+.btn-white {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+}
+
+.btn-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
+}
+
+.btn-white {
+  --tw-text-opacity: 1;
+  color: rgba(55, 65, 81, var(--tw-text-opacity));
+}
+
 .btn-danger {
   --tw-bg-opacity: 1;
   background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
@@ -32066,6 +32081,11 @@ video {
   padding-bottom: 1.25rem;
   --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
+.ghost {
+  border: 2px solid rgba(0,0,0,0.1) !important;
+  background: rgba(0,0,0,0.05) !important;
 }
 
 @media (min-width: 640px) {

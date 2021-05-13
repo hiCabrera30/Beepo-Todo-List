@@ -22240,13 +22240,77 @@ var map = {
 		"./resources/js/pages/auth/login/LoginPage.vue",
 		"resources_js_pages_auth_login_LoginPage_vue"
 	],
-	"./dashboard/DashboardPage": [
-		"./resources/js/pages/dashboard/DashboardPage.vue",
-		"resources_js_pages_dashboard_DashboardPage_vue"
+	"./dashboard/ChartPage": [
+		"./resources/js/pages/dashboard/ChartPage.vue",
+		"resources_js_pages_dashboard_ChartPage_vue"
 	],
-	"./dashboard/DashboardPage.vue": [
-		"./resources/js/pages/dashboard/DashboardPage.vue",
-		"resources_js_pages_dashboard_DashboardPage_vue"
+	"./dashboard/ChartPage.vue": [
+		"./resources/js/pages/dashboard/ChartPage.vue",
+		"resources_js_pages_dashboard_ChartPage_vue"
+	],
+	"./dashboard/HomePage": [
+		"./resources/js/pages/dashboard/HomePage.vue",
+		"resources_js_pages_dashboard_HomePage_vue"
+	],
+	"./dashboard/HomePage.vue": [
+		"./resources/js/pages/dashboard/HomePage.vue",
+		"resources_js_pages_dashboard_HomePage_vue"
+	],
+	"./dashboard/TrashBinPage": [
+		"./resources/js/pages/dashboard/TrashBinPage.vue",
+		"resources_js_pages_dashboard_TrashBinPage_vue"
+	],
+	"./dashboard/TrashBinPage.vue": [
+		"./resources/js/pages/dashboard/TrashBinPage.vue",
+		"resources_js_pages_dashboard_TrashBinPage_vue"
+	],
+	"./dashboard/includes/chart-page/TaskPieChart": [
+		"./resources/js/pages/dashboard/includes/chart-page/TaskPieChart.vue",
+		"resources_js_pages_dashboard_includes_chart-page_TaskPieChart_vue"
+	],
+	"./dashboard/includes/chart-page/TaskPieChart.vue": [
+		"./resources/js/pages/dashboard/includes/chart-page/TaskPieChart.vue",
+		"resources_js_pages_dashboard_includes_chart-page_TaskPieChart_vue"
+	],
+	"./dashboard/includes/chart-page/TasksChart": [
+		"./resources/js/pages/dashboard/includes/chart-page/TasksChart.vue",
+		"resources_js_pages_dashboard_includes_chart-page_TasksChart_vue"
+	],
+	"./dashboard/includes/chart-page/TasksChart.vue": [
+		"./resources/js/pages/dashboard/includes/chart-page/TasksChart.vue",
+		"resources_js_pages_dashboard_includes_chart-page_TasksChart_vue"
+	],
+	"./dashboard/includes/tasks/TaskCreateForm": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskCreateForm.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskCreateForm_vue"
+	],
+	"./dashboard/includes/tasks/TaskCreateForm.vue": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskCreateForm.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskCreateForm_vue"
+	],
+	"./dashboard/includes/tasks/TaskList": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskList.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskList_vue"
+	],
+	"./dashboard/includes/tasks/TaskList.vue": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskList.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskList_vue"
+	],
+	"./dashboard/includes/tasks/TaskListItem": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskListItem.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskListItem_vue"
+	],
+	"./dashboard/includes/tasks/TaskListItem.vue": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskListItem.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskListItem_vue"
+	],
+	"./dashboard/includes/tasks/TaskTrashItem": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskTrashItem.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskTrashItem_vue"
+	],
+	"./dashboard/includes/tasks/TaskTrashItem.vue": [
+		"./resources/js/pages/dashboard/includes/tasks/TaskTrashItem.vue",
+		"resources_js_pages_dashboard_includes_tasks_TaskTrashItem_vue"
 	],
 	"./includes/AuthHeader": [
 		"./resources/js/pages/includes/AuthHeader.vue",
@@ -22255,22 +22319,6 @@ var map = {
 	"./includes/AuthHeader.vue": [
 		"./resources/js/pages/includes/AuthHeader.vue",
 		"resources_js_pages_includes_AuthHeader_vue"
-	],
-	"./tasks/TaskCreateForm": [
-		"./resources/js/pages/tasks/TaskCreateForm.vue",
-		"resources_js_pages_tasks_TaskCreateForm_vue"
-	],
-	"./tasks/TaskCreateForm.vue": [
-		"./resources/js/pages/tasks/TaskCreateForm.vue",
-		"resources_js_pages_tasks_TaskCreateForm_vue"
-	],
-	"./tasks/TaskListItem": [
-		"./resources/js/pages/tasks/TaskListItem.vue",
-		"resources_js_pages_tasks_TaskListItem_vue"
-	],
-	"./tasks/TaskListItem.vue": [
-		"./resources/js/pages/tasks/TaskListItem.vue",
-		"resources_js_pages_tasks_TaskListItem_vue"
 	]
 };
 function webpackAsyncContext(req) {
@@ -22409,7 +22457,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_pages_auth_includes_GuestHeader_vue":"ec89581de3838ecdab11","resources_js_pages_auth_login_LoginPage_vue":"d673d5e992ffdbb516b3","resources_js_pages_dashboard_DashboardPage_vue":"b3f2c0380cfa212b7a05","resources_js_pages_includes_AuthHeader_vue":"9c9acab3873c98ddbb04","resources_js_pages_tasks_TaskCreateForm_vue":"6b00644519d38c6a8276","resources_js_pages_tasks_TaskListItem_vue":"25b2d8965032e466c2c2"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_pages_auth_includes_GuestHeader_vue":"ec89581de3838ecdab11","resources_js_pages_auth_login_LoginPage_vue":"d673d5e992ffdbb516b3","resources_js_pages_dashboard_ChartPage_vue":"ff90d5dadbf468ffcf01","resources_js_pages_dashboard_HomePage_vue":"03601dbdb6b3bad8e3a3","resources_js_pages_dashboard_TrashBinPage_vue":"c9a7d8a0bd6cadc3f04d","resources_js_pages_dashboard_includes_chart-page_TaskPieChart_vue":"aeaf604e224ec9cac3ea","resources_js_pages_dashboard_includes_chart-page_TasksChart_vue":"14ce5e99b23715718bff","resources_js_pages_dashboard_includes_tasks_TaskCreateForm_vue":"277cd2d9536adb6952bd","resources_js_pages_dashboard_includes_tasks_TaskList_vue":"1719a9ebf8213425de11","resources_js_pages_dashboard_includes_tasks_TaskListItem_vue":"0607683da83f7dd2f295","resources_js_pages_dashboard_includes_tasks_TaskTrashItem_vue":"a939e1a9caf43b1f579c","resources_js_pages_includes_AuthHeader_vue":"1e007762d09200f87cc5"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	

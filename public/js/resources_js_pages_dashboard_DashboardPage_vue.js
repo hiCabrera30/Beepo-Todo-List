@@ -245,6 +245,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -316,6 +330,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _components_FormInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../components/FormInput */ "./resources/js/components/FormInput.vue");
+//
 //
 //
 //
@@ -1216,31 +1231,87 @@ var render = function() {
     [
       _c("auth-header", { attrs: { user: _vm.user } }),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "md:container md:mx-auto bg-white mt-5 card" },
-        [
-          _c("task-create-form"),
-          _vm._v(" "),
-          _c(
-            "div",
-            {},
-            _vm._l(_vm.tasks, function(task) {
-              return _c("task-list-item", {
-                key: task.id,
-                attrs: { task: task, statuses: _vm.statuses }
-              })
-            }),
-            1
-          )
-        ],
-        1
-      )
+      _c("div", { staticClass: "md:container md:mx-auto mt-5" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "card bg-white" },
+          [
+            _c("task-create-form"),
+            _vm._v(" "),
+            _c(
+              "div",
+              {},
+              _vm._l(_vm.tasks, function(task) {
+                return _c("task-list-item", {
+                  key: task.id,
+                  attrs: { task: task, statuses: _vm.statuses }
+                })
+              }),
+              1
+            )
+          ],
+          1
+        )
+      ])
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "text-right mb-2" }, [
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-white",
+          attrs: { href: "/api/tasks/download-excel" }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-download mr-1",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" Download JSON\n            ")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-white",
+          attrs: { href: "/api/tasks/download-csv" }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-download mr-1",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" Download CSV\n            ")
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "a",
+        {
+          staticClass: "btn btn-white",
+          attrs: { href: "/api/tasks/download-json" }
+        },
+        [
+          _c("i", {
+            staticClass: "fa fa-download mr-1",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" Download Excel\n            ")
+        ]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -1371,7 +1442,11 @@ var render = function() {
             },
             expression: "form.context"
           }
-        })
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-sm text-gray-400 mt-1" }, [
+          _vm._v("Press enter to save")
+        ])
       ],
       1
     )
