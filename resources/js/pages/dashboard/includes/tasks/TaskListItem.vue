@@ -35,6 +35,7 @@
         </div>
         <div class="px-5">
             <div v-if="hasSubTasks" class="space-y-3">
+                <!-- <task-list :statuses="statuses" :tasks="subTasks" :is-root="true"></task-list> -->
                 <task-list-item
                     v-for="subTask in task.sub_tasks" :key="subTask.id"
                     :task="subTask"

@@ -454,6 +454,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -4945,14 +4946,39 @@ var render = function() {
           ])
         : _vm._e(),
       _vm._v(" "),
-      _vm._l(_vm.orderedTasks, function(task) {
-        return _c("task-list-item", {
-          key: task.id,
-          attrs: { task: task, statuses: _vm.statuses }
-        })
-      })
+      _c(
+        "draggable",
+        _vm._b(
+          {
+            on: { change: _vm.orderChanged },
+            model: {
+              value: _vm.orderedTasks,
+              callback: function($$v) {
+                _vm.orderedTasks = $$v
+              },
+              expression: "orderedTasks"
+            }
+          },
+          "draggable",
+          _vm.dragOptions,
+          false
+        ),
+        [
+          _c(
+            "transition-group",
+            _vm._l(_vm.orderedTasks, function(task) {
+              return _c("task-list-item", {
+                key: task.id,
+                attrs: { task: task, statuses: _vm.statuses }
+              })
+            }),
+            1
+          )
+        ],
+        1
+      )
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []

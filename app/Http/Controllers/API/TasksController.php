@@ -87,15 +87,14 @@ class TasksController extends Controller {
                 ->decrement("order");
 
             Task::ofParent($data["parent_id"])
-                ->where("order", ">", $data["new_index"])
+                ->where("order", ">=", $data["new_index"])
                 ->increment("order");
-            
-            Task::where("id", $data["task_id"])->get()
-                ->update(["order" => $data["new_index"] + 1]);
+            Task::where("id", $data["task_id"])
+                ->update(["order" => $data["new_index"]]);
 
             return $this->resolve("Task successfully re-ordered", []);
         } catch (Exception $ex) {
-            return redirect()->back()->with('error', "Something went wrong.");
+            return $this->reject($ex);
         }
     }
 

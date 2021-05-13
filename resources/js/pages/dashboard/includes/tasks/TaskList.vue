@@ -3,15 +3,15 @@
         <div v-if="isRoot && tasks.length == 0">
             <h2 class="text-5xl text-gray-300 font-bold p-5">No tasks found</h2>
         </div>
-        <!-- <draggable v-model="orderedTasks" v-bind="dragOptions" @change="orderChanged">
-            <transition-group> -->
+        <draggable v-model="orderedTasks" v-bind="dragOptions" @change="orderChanged">
+            <transition-group>
                 <task-list-item
                     v-for="task in orderedTasks" :key="task.id"
                     :task="task"
                     :statuses="statuses"
                 ></task-list-item>
-            <!-- </transition-group>
-        </draggable> -->
+            </transition-group>
+        </draggable>
     </div>
 </template>
 <script>
