@@ -22,6 +22,7 @@ Route::group(['middleware' => ["guest"]], function () {
 Route::group(['middleware' => ["auth"]], function () {
 
     Route::name("tasks.update-order")->put("/tasks/update-order", "TasksController@updateOrder");
+    Route::name("tasks.insert-to-list")->put("/tasks/insert-to-list", "TasksController@insertToList");
 
     Route::name("tasks.download-excel")->get("/tasks/download-excel", "TasksController@downloadExcel");
     Route::name("tasks.download-csv")->get("/tasks/download-csv", "TasksController@downloadCSV");

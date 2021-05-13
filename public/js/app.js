@@ -22290,11 +22290,11 @@ var map = {
 	],
 	"./dashboard/includes/tasks/TaskList": [
 		"./resources/js/pages/dashboard/includes/tasks/TaskList.vue",
-		"resources_js_pages_dashboard_includes_tasks_TaskList_vue"
+		"node_modules_babel-loader_lib_index_js_clonedRuleSet-5_0_rules_0_use_0_node_modules_vue-loade-2c7617"
 	],
 	"./dashboard/includes/tasks/TaskList.vue": [
 		"./resources/js/pages/dashboard/includes/tasks/TaskList.vue",
-		"resources_js_pages_dashboard_includes_tasks_TaskList_vue"
+		"node_modules_babel-loader_lib_index_js_clonedRuleSet-5_0_rules_0_use_0_node_modules_vue-loade-2c7617"
 	],
 	"./dashboard/includes/tasks/TaskListItem": [
 		"./resources/js/pages/dashboard/includes/tasks/TaskListItem.vue",
@@ -22457,7 +22457,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames based on template
-/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_pages_auth_includes_GuestHeader_vue":"ec89581de3838ecdab11","resources_js_pages_auth_login_LoginPage_vue":"d673d5e992ffdbb516b3","resources_js_pages_dashboard_ChartPage_vue":"ff90d5dadbf468ffcf01","resources_js_pages_dashboard_HomePage_vue":"996eef8f5ce1fb67be66","resources_js_pages_dashboard_TrashBinPage_vue":"c9a7d8a0bd6cadc3f04d","resources_js_pages_dashboard_includes_chart-page_TaskPieChart_vue":"aeaf604e224ec9cac3ea","resources_js_pages_dashboard_includes_chart-page_TasksChart_vue":"14ce5e99b23715718bff","resources_js_pages_dashboard_includes_tasks_TaskCreateForm_vue":"277cd2d9536adb6952bd","resources_js_pages_dashboard_includes_tasks_TaskList_vue":"8ad01006acdc2113e20e","resources_js_pages_dashboard_includes_tasks_TaskListItem_vue":"02275430af2877a80287","resources_js_pages_dashboard_includes_tasks_TaskTrashItem_vue":"a939e1a9caf43b1f579c","resources_js_pages_includes_AuthHeader_vue":"1e007762d09200f87cc5"}[chunkId] + "";
+/******/ 			return "js/" + chunkId + ".js?id=" + {"resources_js_pages_auth_includes_GuestHeader_vue":"ec89581de3838ecdab11","resources_js_pages_auth_login_LoginPage_vue":"d673d5e992ffdbb516b3","resources_js_pages_dashboard_ChartPage_vue":"ff90d5dadbf468ffcf01","resources_js_pages_dashboard_HomePage_vue":"7d6c3203b5fdd6025065","resources_js_pages_dashboard_TrashBinPage_vue":"c9a7d8a0bd6cadc3f04d","resources_js_pages_dashboard_includes_chart-page_TaskPieChart_vue":"aeaf604e224ec9cac3ea","resources_js_pages_dashboard_includes_chart-page_TasksChart_vue":"14ce5e99b23715718bff","resources_js_pages_dashboard_includes_tasks_TaskCreateForm_vue":"277cd2d9536adb6952bd","node_modules_babel-loader_lib_index_js_clonedRuleSet-5_0_rules_0_use_0_node_modules_vue-loade-2c7617":"b6d984cf98c36e903305","resources_js_pages_dashboard_includes_tasks_TaskListItem_vue":"2012c6d277b05318100b","resources_js_pages_dashboard_includes_tasks_TaskTrashItem_vue":"a939e1a9caf43b1f579c","resources_js_pages_includes_AuthHeader_vue":"1e007762d09200f87cc5","resources_js_pages_dashboard_includes_tasks_TaskList_vue":"b2effe37d2d2541c684a"}[chunkId] + "";
 /******/ 		};
 /******/ 	})();
 /******/ 	

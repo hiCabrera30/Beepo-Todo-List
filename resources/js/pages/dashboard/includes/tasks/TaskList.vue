@@ -3,7 +3,13 @@
         <div v-if="isRoot && tasks.length == 0">
             <h2 class="text-5xl text-gray-300 font-bold p-5">No tasks found</h2>
         </div>
-        <draggable v-model="orderedTasks" v-bind="dragOptions" @change="orderChanged">
+        <draggable 
+            v-model="orderedTasks"
+            v-bind="dragOptions"
+            @change="orderChanged"
+            :emptyInsertThreshold="100"
+            class="p-4 bg-gray-100 w-full border-2"
+            >
             <transition-group>
                 <task-list-item
                     v-for="task in orderedTasks" :key="task.id"
@@ -40,8 +46,34 @@ export default {
 
     methods: {
         orderChanged(event) {
-            const { newIndex, oldIndex } = event.moved;
-            const task = this.orderedTasks[newIndex];
+            if (event.added) {
+                return this.draggedNewItemToList(event.added)
+            } else if (event.moved) {
+                return this.updateItemOrder(event.moved)
+            }
+
+        },
+
+        draggedNewItemToList(event) {
+            const newIndex = event.newIndex;
+            const task = event.element;
+            console.log(event);
+
+            axios.put("/api/tasks/insert-to-list", {
+                task_id: task.id,
+                old_parent_id: task.parent_id,
+                new_parent_id: this.parentId,
+                new_index: newIndex,
+            })
+                .then(response => {})
+                .catch(error => this.failedToUpdateOrder(error));
+        },
+
+        updateItemOrder(event) {
+            console.log(event);
+            const newIndex = event.newIndex;
+            const oldIndex = event.oldIndex;
+            const task = event.element;
             axios.put("/api/tasks/update-order", {
                 parent_id: task.parent_id,
                 task_id: task.id,
@@ -71,6 +103,10 @@ export default {
     },
 
     props: {
+        parentId: {
+            default: null,
+            type: Number,
+        },
         statuses: Array,
         isRoot: {
             type: Boolean,

@@ -382,6 +382,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 
@@ -405,19 +411,41 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   methods: {
     orderChanged: function orderChanged(event) {
+      if (event.added) {
+        return this.draggedNewItemToList(event.added);
+      } else if (event.moved) {
+        return this.updateItemOrder(event.moved);
+      }
+    },
+    draggedNewItemToList: function draggedNewItemToList(event) {
       var _this = this;
 
-      var _event$moved = event.moved,
-          newIndex = _event$moved.newIndex,
-          oldIndex = _event$moved.oldIndex;
-      var task = this.orderedTasks[newIndex];
+      var newIndex = event.newIndex;
+      var task = event.element;
+      console.log(event);
+      axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/tasks/insert-to-list", {
+        task_id: task.id,
+        old_parent_id: task.parent_id,
+        new_parent_id: this.parentId,
+        new_index: newIndex
+      }).then(function (response) {})["catch"](function (error) {
+        return _this.failedToUpdateOrder(error);
+      });
+    },
+    updateItemOrder: function updateItemOrder(event) {
+      var _this2 = this;
+
+      console.log(event);
+      var newIndex = event.newIndex;
+      var oldIndex = event.oldIndex;
+      var task = event.element;
       axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/tasks/update-order", {
         parent_id: task.parent_id,
         task_id: task.id,
         old_index: oldIndex,
         new_index: newIndex
       }).then(function (response) {})["catch"](function (error) {
-        return _this.failedToUpdateOrder(error);
+        return _this2.failedToUpdateOrder(error);
       });
     },
     failedToUpdateOrder: function failedToUpdateOrder(error) {
@@ -437,6 +465,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     }
   },
   props: {
+    parentId: {
+      "default": null,
+      type: Number
+    },
     statuses: Array,
     isRoot: {
       type: Boolean,
@@ -523,6 +555,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // import TaskList from "./TaskList";
+
+var TaskList = function TaskList() {
+  return __webpack_require__.e(/*! import() */ "resources_js_pages_dashboard_includes_tasks_TaskList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./TaskList */ "./resources/js/pages/dashboard/includes/tasks/TaskList.vue"));
+};
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -530,7 +567,8 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     FormInput: _components_FormInput__WEBPACK_IMPORTED_MODULE_1__.default,
     FormSelect: _components_FormSelect__WEBPACK_IMPORTED_MODULE_2__.default,
-    TaskCreateForm: _TaskCreateForm__WEBPACK_IMPORTED_MODULE_3__.default
+    TaskCreateForm: _TaskCreateForm__WEBPACK_IMPORTED_MODULE_3__.default,
+    TaskList: TaskList
   },
   computed: {
     hasSubTasks: function hasSubTasks() {
@@ -5310,6 +5348,8 @@ var render = function() {
         "draggable",
         _vm._b(
           {
+            staticClass: "p-4 bg-gray-100 w-full border-2",
+            attrs: { emptyInsertThreshold: 100 },
             on: { change: _vm.orderChanged },
             model: {
               value: _vm.orderedTasks,
@@ -5469,46 +5509,46 @@ var render = function() {
             ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "px-5" }, [
-        _vm.hasSubTasks
-          ? _c(
-              "div",
-              { staticClass: "space-y-3" },
-              _vm._l(_vm.task.sub_tasks, function(subTask) {
-                return _c("task-list-item", {
-                  key: subTask.id,
-                  attrs: { task: subTask, statuses: _vm.statuses }
-                })
-              }),
-              1
-            )
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.showAddTask
-          ? _c(
-              "div",
-              { staticClass: "flex flex-row space-x-2 py-3" },
-              [
-                _c("task-create-form", {
-                  staticClass: "flex-grow m-0",
-                  attrs: { "parent-id": _vm.task.id }
-                }),
-                _vm._v(" "),
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "flex-none btn btn-default",
-                      on: { click: _vm.cancelAddItem }
-                    },
-                    [_c("i", { staticClass: "fa fa-ban" })]
-                  )
-                ])
-              ],
-              1
-            )
-          : _vm._e()
-      ])
+      _c(
+        "div",
+        { staticClass: "px-5" },
+        [
+          _c("task-list", {
+            attrs: {
+              statuses: _vm.statuses,
+              tasks: _vm.task.sub_tasks,
+              "is-root": false,
+              "parent-id": _vm.task.id
+            }
+          }),
+          _vm._v(" "),
+          _vm.showAddTask
+            ? _c(
+                "div",
+                { staticClass: "flex flex-row space-x-2 py-3" },
+                [
+                  _c("task-create-form", {
+                    staticClass: "flex-grow m-0",
+                    attrs: { "parent-id": _vm.task.id }
+                  }),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "flex-none btn btn-default",
+                        on: { click: _vm.cancelAddItem }
+                      },
+                      [_c("i", { staticClass: "fa fa-ban" })]
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e()
+        ],
+        1
+      )
     ]
   )
 }

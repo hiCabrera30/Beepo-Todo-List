@@ -34,14 +34,14 @@
             </div>
         </div>
         <div class="px-5">
-            <div v-if="hasSubTasks" class="space-y-3">
-                <!-- <task-list :statuses="statuses" :tasks="subTasks" :is-root="true"></task-list> -->
-                <task-list-item
+            <!-- <div v-if="hasSubTasks" class="space-y-3"> -->
+                <task-list :statuses="statuses" :tasks="task.sub_tasks" :is-root="false" :parent-id="task.id"></task-list>
+                <!-- <task-list-item
                     v-for="subTask in task.sub_tasks" :key="subTask.id"
                     :task="subTask"
                     :statuses="statuses"
-                ></task-list-item>
-            </div>
+                ></task-list-item> -->
+            <!-- </div> -->
             <div v-if="showAddTask" class="flex flex-row space-x-2 py-3">
                 <task-create-form class="flex-grow m-0" :parent-id="task.id"></task-create-form>
                 <div>
@@ -59,12 +59,14 @@ import mixins from "../../../../utils/mixins";
 import FormInput from "../../../../components/FormInput";
 import FormSelect from "../../../../components/FormSelect";
 import TaskCreateForm from "./TaskCreateForm";
+// import TaskList from "./TaskList";
+const TaskList = () => import("./TaskList");
 
 import axios from "axios";
 
 export default {
     name: "TaskListItem",
-    components: { FormInput, FormSelect, TaskCreateForm },
+    components: { FormInput, FormSelect, TaskCreateForm, TaskList },
 
     computed: {
         hasSubTasks() {

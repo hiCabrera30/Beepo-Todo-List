@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Tasks\CreateTaskRequest;
 use App\Http\Requests\Tasks\UpdateTaskRequest;
 use App\Http\Resources\Tasks\BasicTaskResource;
+use App\Managers\TaskManager;
 use App\Models\Task;
 use Excel;
 use Exception;
@@ -79,18 +80,19 @@ class TasksController extends Controller {
         }
     }
 
-    public function updateOrder(Request $request) {
+    public function insertToList(Request $request, TaskManager $taskManager) {
         try {
-            $data = $request->all();
-            Task::ofParent($data["parent_id"])
-                ->where("order", ">", $data["old_index"])
-                ->decrement("order");
+            $taskManager->insertTaskToList($request->all());
 
-            Task::ofParent($data["parent_id"])
-                ->where("order", ">=", $data["new_index"])
-                ->increment("order");
-            Task::where("id", $data["task_id"])
-                ->update(["order" => $data["new_index"]]);
+            return $this->resolve("Task successfully re-ordered", []);
+        } catch (Exception $ex) {
+            return $this->reject($ex);
+        }
+    }
+
+    public function updateOrder(Request $request, TaskManager $taskManager) {
+        try {
+            $taskManager->updateTaskOrder($request->all());
 
             return $this->resolve("Task successfully re-ordered", []);
         } catch (Exception $ex) {
