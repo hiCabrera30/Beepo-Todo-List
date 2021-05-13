@@ -18,6 +18,7 @@ class TasksController extends Controller {
                 "parent_id" => $request->get("parent_id"),
                 "context"   => $request->get("context"),
                 "author_id" => Auth::user()->id,
+                "status"    => "pending",
             ];
             $task = Task::create($data);
 
@@ -34,16 +35,6 @@ class TasksController extends Controller {
             return $this->resolve("Task successfully updated", compact("task"));
         } catch (Exception $ex) {
             return $this->reject($ex);
-        }
-    }
-
-    public function toggleCompletion(Task $task) {
-        try {
-            $task->toggleCompletion();
-
-            return Redirect::route('dashboard.index');
-        } catch (Exception $ex) {
-            return redirect()->back()->with('error', "Something went wrong.");
         }
     }
 

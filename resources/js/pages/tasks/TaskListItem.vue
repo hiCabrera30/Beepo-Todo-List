@@ -1,13 +1,16 @@
 <template>
     <div class="p-3 border-b border-l border-r border-gray-200">
         <div class="flex flex-row space-x-2 pb-2">
-            <input class="flex-none mt-2" type="checkbox" v-model="form.is_completed" />
-            
-            <h4 v-if="!editable" :class="contextClass" v-text="form.context"></h4>
-            <form v-else @submit.prevent="update" class="flex-grow m-0">
-                <form-input placeholder="Task"  v-model="form.context" ref="context"></form-input>
-                <div class="text-gray-300">Press enter to save</div>
-            </form>
+
+            <div v-if="!editable" class="flex-grow m-0">
+                <h4 class="m-0 font-semibold" v-text="form.context"></h4>
+                <span class="mt-3 text-gray-400" v-text="form.status"></span>
+
+            </div>
+            <div v-else class="flex-grow m-0 space-y-2">
+                <form-input placeholder="Context" label="Context" v-model="form.context" ref="context"></form-input>
+                <form-select :options="statuses" label="Status" v-model="form.status"></form-select>
+            </div>
 
             <div v-if="!editable">
                 <button v-if="!showAddTask" class="flex-none btn btn-primary" @click="displayAddItem">
@@ -16,16 +19,17 @@
                 <button class="flex-none btn btn-warning" @click="toggleEdit">
                     <i class="fa fa-pen"></i>
                 </button>
-            </div>
-            <div v-else>
-                <button class="flex-none btn btn-warning" @click="toggleEdit">
-                    Cancel Edit
-                </button>
-            </div>
-
-            <div>
                 <button class="flex-none btn btn-danger" @click="destroy">
                     <i class="fa fa-trash"></i>
+                </button>
+            </div>
+            <div v-else>
+                
+                <button class="flex-none btn btn-primary text-xs" @click="update">
+                    <i class="fa fa-save mr-1"></i> Save
+                </button>
+                <button class="flex-none btn btn-warning text-xs" @click="toggleEdit">
+                    <i class="fa fa-ban mr-1"></i> Cancel Edit
                 </button>
             </div>
         </div>
@@ -34,6 +38,7 @@
                 <task-list-item
                     v-for="subTask in task.sub_tasks" :key="subTask.id"
                     :task="subTask"
+                    :statuses="statuses"
                 ></task-list-item>
             </div>
             <div v-if="showAddTask" class="flex flex-row space-x-2 py-3">
@@ -49,27 +54,18 @@
 </template>
 <script>
 import FormInput from "../../components/FormInput";
+import FormSelect from "../../components/FormSelect";
 import TaskCreateForm from "./TaskCreateForm";
 import mixins from "../../utils/mixins";
 import axios from "axios";
 
 export default {
     name: "TaskListItem",
-    components: { FormInput, TaskCreateForm },
+    components: { FormInput, FormSelect, TaskCreateForm },
 
     computed: {
         hasSubTasks() {
             return this.task.sub_tasks && this.task.sub_tasks.length > 0;
-        },
-        isCompleted() {
-            return this.form.is_completed;
-        },
-
-        contextClass() {
-            return {
-                "flex-grow m-0": true,
-                "line-through": this.isCompleted,
-            }
         },
     },
 
@@ -78,7 +74,7 @@ export default {
             editable: false,
             showAddTask: false,
             form: this.$inertia.form({
-                is_completed: this.task.is_completed,
+                status: this.task.status,
                 parent_id: this.task.parent_id,
                 context: this.task.context,
             }),
@@ -101,6 +97,7 @@ export default {
         update() {
             axios.put(`/api/tasks/${ this.task.id }`, {
                 context: this.form.context,
+                status: this.form.status,
             })
             .then(response => this.updated(response))
             .catch(error => this.failedToUpdate(error))
@@ -109,7 +106,7 @@ export default {
             this.editable = false;
             const task = response.data.result.task;
             this.form = this.$inertia.form({
-                is_completed: task.is_completed,
+                status: task.status,
                 parent_id: task.parent_id,
                 context: task.context,
             });
@@ -127,25 +124,15 @@ export default {
             
 
         },
-        toggleCompletion() {
-            this.$inertia.patch(`/api/tasks/${ this.task.id }/toggle-completion`);
-        },
         destroy() {
             this.$inertia.delete(`/api/tasks/${ this.task.id }`);
-        },
-    },
-
-    watch: {
-        isCompleted(newValue, oldValue) {
-            if (oldValue !== null && oldValue !== undefined) {
-                this.toggleCompletion();
-            }
         },
     },
 
     mixins: [mixins],
     props: {
         task: [Object],
+        statuses: [Array],
         errors: [Object],
         response: [Object],
     }

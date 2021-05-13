@@ -24,11 +24,12 @@ class UpdateTaskRequest extends FormRequest {
      */
     public function rules() {
         return [
-            'context'   => ["required"],
+            'context' => ["required"],
+            'status'  => ["required"],
         ];
     }
 
     public function getFormData() {
-        return $this->only("context");
+        return $this->only("context", "status");
     }
 }

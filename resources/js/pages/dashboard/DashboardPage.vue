@@ -8,6 +8,7 @@
                 <task-list-item
                     v-for="task in tasks" :key="task.id"
                     :task="task"
+                    :statuses="statuses"
                 ></task-list-item>
             </div>
         </div>
@@ -35,6 +36,7 @@ export default {
     props: {
         user: Object,
         tasks: Array,
+        statuses: Array,
     }
 }
 </script>

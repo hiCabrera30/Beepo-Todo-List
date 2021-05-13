@@ -14,10 +14,15 @@ class DashboardController extends Controller {
         $tasks = Task::ofUser($user->id)
             ->fetchByHeirarchy()
             ->get();
+        $statuses = [
+            "pending",
+            "complete",
+            "cancelled",
+        ];
         
         $user = $this->flattenObject(new BasicUserResource($user));
 
-        return inertia("dashboard/DashboardPage", compact("user", "tasks"));
+        return inertia("dashboard/DashboardPage", compact("user", "tasks", "statuses"));
     }
 
 }

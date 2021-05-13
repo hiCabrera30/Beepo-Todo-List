@@ -15,8 +15,8 @@ class CreateTasksTable extends Migration {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->unsignedInteger("parent_id")->nullable();
-            $table->boolean("is_completed")->default(false);
             $table->string("context");
+            $table->string("status");
             $table->unsignedInteger("author_id")->nullable();
             $table->timestamps();
             $table->softDeletes();

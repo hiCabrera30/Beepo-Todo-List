@@ -27,6 +27,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   computed: {
     hasError: function hasError() {
@@ -83,6 +84,7 @@ __webpack_require__.r(__webpack_exports__);
       type: Boolean,
       "default": false
     },
+    label: String,
     placeholder: String,
     type: {
       "default": 'text',
@@ -520,6 +522,13 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm.label
+      ? _c("div", {
+          staticClass: "text-sm color-gray-600",
+          domProps: { textContent: _vm._s(_vm.label) }
+        })
+      : _vm._e(),
+    _vm._v(" "),
     _c("input", {
       ref: "input",
       staticClass: "form-input",

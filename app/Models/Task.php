@@ -18,16 +18,7 @@ class Task extends Model {
      * @var array
      */
     protected $fillable = [
-        'parent_id', 'context', 'author_id', 'is_completed',
-    ];
-    
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array
-     */
-    protected $casts = [
-        'is_completed' => 'boolean',
+        'parent_id', 'context', 'author_id', "status",
     ];
 
     public function items() {
@@ -45,10 +36,6 @@ class Task extends Model {
     public function scopeFetchByHeirarchy($query) {
         return $query->whereNull("parent_id")
             ->with("subTasks");
-    }
-
-    public function toggleCompletion() {
-        return $this->update(["is_completed" => !$this->is_completed]);
     }
     
 

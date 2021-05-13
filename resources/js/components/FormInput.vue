@@ -1,5 +1,6 @@
 <template>
     <div>
+        <div v-if="label" class="text-sm color-gray-600" v-text="label"></div>
         <input
             :type="type"
             class="form-input"
@@ -87,6 +88,7 @@ export default {
             type: Boolean,
             default: false,
         },
+        label: String,
         placeholder: String,
         type: {
             default: 'text',

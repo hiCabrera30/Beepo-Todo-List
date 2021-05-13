@@ -21,8 +21,6 @@ Route::group(['middleware' => ["guest"]], function () {
 });
 
 Route::group(['middleware' => ["auth"]], function () {
-    
-    Route::name("tasks.toggle-completion")->patch("/tasks/{task}/toggle-completion", "TasksController@toggleCompletion");
 
     Route::resource('tasks', "TasksController")
         ->only(["store", "update", "destroy"]);
