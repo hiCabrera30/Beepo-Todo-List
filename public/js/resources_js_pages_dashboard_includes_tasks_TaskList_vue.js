@@ -85,7 +85,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       var newIndex = event.newIndex;
       var task = event.element;
-      console.log(event);
       axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/tasks/insert-to-list", {
         task_id: task.id,
         old_parent_id: task.parent_id,
@@ -3963,7 +3962,7 @@ var render = function() {
         "draggable",
         _vm._b(
           {
-            staticClass: "p-4 bg-gray-100 w-full border-2",
+            staticClass: "p-4 w-full",
             attrs: { emptyInsertThreshold: 100 },
             on: { change: _vm.orderChanged },
             model: {

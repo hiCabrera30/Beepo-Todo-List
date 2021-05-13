@@ -134,8 +134,6 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      console.log("SUBMIT CALLED");
-      console.log(this.form);
       this.form.post('/api/tasks', {
         onFinish: function onFinish() {
           return _this.onSubmitFinish();
@@ -143,7 +141,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     onSubmitFinish: function onSubmitFinish() {
-      this.form.context = null;
+      this.form.reset("context");
     }
   },
   props: {

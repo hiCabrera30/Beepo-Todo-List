@@ -8,7 +8,7 @@
             v-bind="dragOptions"
             @change="orderChanged"
             :emptyInsertThreshold="100"
-            class="p-4 bg-gray-100 w-full border-2"
+            class="p-4 w-full"
             >
             <transition-group>
                 <task-list-item
@@ -57,7 +57,6 @@ export default {
         draggedNewItemToList(event) {
             const newIndex = event.newIndex;
             const task = event.element;
-            console.log(event);
 
             axios.put("/api/tasks/insert-to-list", {
                 task_id: task.id,

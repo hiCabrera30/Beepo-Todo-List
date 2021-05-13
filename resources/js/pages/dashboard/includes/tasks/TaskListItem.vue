@@ -34,14 +34,7 @@
             </div>
         </div>
         <div class="px-5">
-            <!-- <div v-if="hasSubTasks" class="space-y-3"> -->
-                <task-list :statuses="statuses" :tasks="task.sub_tasks" :is-root="false" :parent-id="task.id"></task-list>
-                <!-- <task-list-item
-                    v-for="subTask in task.sub_tasks" :key="subTask.id"
-                    :task="subTask"
-                    :statuses="statuses"
-                ></task-list-item> -->
-            <!-- </div> -->
+            <task-list :statuses="statuses" :tasks="task.sub_tasks" :is-root="false" :parent-id="task.id"></task-list>
             <div v-if="showAddTask" class="flex flex-row space-x-2 py-3">
                 <task-create-form class="flex-grow m-0" :parent-id="task.id"></task-create-form>
                 <div>
@@ -89,7 +82,7 @@ export default {
     methods: {
         toggleEdit() {
             if (this.editable) {
-                this.form.reset("context");
+                this.form.reset("context", "status");
             }
             this.editable = !this.editable;
         },

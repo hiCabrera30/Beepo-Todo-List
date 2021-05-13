@@ -24,15 +24,13 @@ export default {
 
     methods: {
         submit() {
-            console.log("SUBMIT CALLED");
-            console.log(this.form);
             this.form.post('/api/tasks', {
                 onFinish: () => this.onSubmitFinish()
             });
         },
 
         onSubmitFinish() {
-            this.form.context = null;
+            this.form.reset("context");
         },
     },
 

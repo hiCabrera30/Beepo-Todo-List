@@ -10,6 +10,8 @@
             :allow-empty="false"
             :select-label="''"
             @select="onChange"
+            @tag="onNewTag"
+            :taggable="true"
         >
             <template slot="singleLabel" slot-scope="{ option }">
                 <slot name="displayedValue" :option="option">
@@ -72,6 +74,13 @@ export default {
         isArrayAnEmptyString() {
             return typeof this.error === "string"
                 && !this.error.trim().length;
+        },
+        onNewTag(newTag) {
+            this.options.push(newTag);
+            this.$nextTick(() => {
+                this.data = newTag;
+                this.onChange(this.data = newTag)
+            });
         },
 
         onChange(data) {

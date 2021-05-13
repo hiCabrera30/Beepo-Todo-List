@@ -4,22 +4,19 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Users\BasicUserResource;
+use App\Managers\TaskManager;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller {
 
-    public function index() {
+    public function index(TaskManager $taskManager) {
         $tasks = Task::ofUser(Auth::user()->id)
             ->fetchByHeirarchy()
             ->sortByOrder()
             ->get();
-        $statuses = [
-            "pending",
-            "complete",
-            "cancelled",
-        ];
+        $statuses = $taskManager->getTaskStatuses(Auth::user()->id);
 
         return inertia("dashboard/HomePage", compact("tasks", "statuses"));
     }

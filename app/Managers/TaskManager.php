@@ -6,6 +6,24 @@ use App\Models\Task;
 
 class TaskManager {
 
+    public function getTaskStatuses($userId = null) {
+        $statuses = [ "pending", "complete", "cancelled" ];
+        
+        $tasks = $userId ? Task::ofUser($userId) : Task::query();
+
+            $customStatuses = $tasks->select("status")
+                ->groupBy("status")
+                ->whereNotIn("status", $statuses)
+                ->get()
+                ->map(function ($task) {
+                    return $task->status;
+                })
+                ->toArray();
+
+        return array_merge($statuses, $customStatuses);
+    }
+
+
     public function insertTaskToList(array $data) {
         $task = Task::findOrFail($data["task_id"]);
 

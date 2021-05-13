@@ -134,6 +134,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'FormSelect',
@@ -173,6 +175,16 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     isArrayAnEmptyString: function isArrayAnEmptyString() {
       return typeof this.error === "string" && !this.error.trim().length;
     },
+    onNewTag: function onNewTag(newTag) {
+      var _this = this;
+
+      this.options.push(newTag);
+      this.$nextTick(function () {
+        _this.data = newTag;
+
+        _this.onChange(_this.data = newTag);
+      });
+    },
     onChange: function onChange(data) {
       data = _typeof(data) === 'object' && data[this.valueKey] !== undefined ? data[this.valueKey] : data;
       this.$emit("input", data);
@@ -201,11 +213,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     }
   },
   mounted: function mounted() {
-    var _this = this;
+    var _this2 = this;
 
     var dataList = this.options.filter(function (item) {
-      var data = _typeof(item) === 'object' && item[_this.valueKey] !== undefined ? item[_this.valueKey] : item;
-      return data === _this.value;
+      var data = _typeof(item) === 'object' && item[_this2.valueKey] !== undefined ? item[_this2.valueKey] : item;
+      return data === _this2.value;
     });
     this.data = dataList.length > 0 ? dataList[0] : null;
   }
@@ -251,8 +263,6 @@ __webpack_require__.r(__webpack_exports__);
     submit: function submit() {
       var _this = this;
 
-      console.log("SUBMIT CALLED");
-      console.log(this.form);
       this.form.post('/api/tasks', {
         onFinish: function onFinish() {
           return _this.onSubmitFinish();
@@ -260,7 +270,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     onSubmitFinish: function onSubmitFinish() {
-      this.form.context = null;
+      this.form.reset("context");
     }
   },
   props: {
@@ -289,13 +299,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _TaskCreateForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TaskCreateForm */ "./resources/js/pages/dashboard/includes/tasks/TaskCreateForm.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -381,7 +384,7 @@ var TaskList = function TaskList() {
   methods: {
     toggleEdit: function toggleEdit() {
       if (this.editable) {
-        this.form.reset("context");
+        this.form.reset("context", "status");
       }
 
       this.editable = !this.editable;
@@ -912,9 +915,10 @@ var render = function() {
           "max-height": 150,
           "custom-label": _vm.displayedValue,
           "allow-empty": false,
-          "select-label": ""
+          "select-label": "",
+          taggable: true
         },
-        on: { select: _vm.onChange },
+        on: { select: _vm.onChange, tag: _vm.onNewTag },
         scopedSlots: _vm._u(
           [
             {
