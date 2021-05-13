@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.link {
+    @apply inline-block py-2 px-2 rounded-md font-semibold;
+}
+
+.btn {
+    @apply inline-block py-2 px-6 rounded-md shadow-md font-semibold outline-none;
+}
+
+.btn-disabled {
+    @apply inline-block py-2 px-6 rounded-md font-semibold text-gray-700 bg-gray-300 opacity-50;
+}
+
+.btn-primary {
+    @apply text-white bg-blue-400 hover:bg-blue-300;
+}
+
+.btn-warning {
+    @apply text-white bg-yellow-400 hover:bg-yellow-300;
+}
+
+.btn-default {
+    @apply text-gray-700 bg-gray-300 hover:bg-gray-200;
+}
+
+.btn-danger {
+    @apply text-white bg-red-500 hover:bg-red-400;
+}
+
+.form-input {
+    @apply w-full h-12 border border-gray-300 focus:border-gray-400 outline-none rounded px-3;
+}
+
+.login-pane {
+    width: 34rem;
+    max-width: 100%;
+    @apply bg-white shadow-xl rounded px-10 py-10;
+
+}
+
+.error-message {
+    @apply py-4 px-3 bg-red-400 text-white rounded-md shadow-md font-semibold flex flex-row space-x-2;
+}
+
+.error-message .icon {
+    @apply inline-block pt-1;
+}
+
+.error-message .text {
+    @apply inline-block w-auto;
+}
+
+
+
+.card {
+    @apply px-3 py-5 rounded-md shadow-md;
+}

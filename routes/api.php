@@ -14,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['middleware' => ["guest"]], function () {
+
+    Route::name("auth.login")->post("/login", "AuthController@login");
+
+});
+
+Route::group(['middleware' => ["auth"]], function () {
+    
+    Route::name("tasks.toggle-completion")->patch("/tasks/{task}/toggle-completion", "TasksController@toggleCompletion");
+
+    Route::resource('tasks', "TasksController")
+        ->only(["store", "update", "destroy"]);
+
 });
